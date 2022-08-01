@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="col-md-12">
+        <div class="card-header"><h5 class="title">Oyuncu ekle</h5></div>
+        <div>
+          <form [formGroup]="playerAddForm">
+            <div class="row" *ngIf="playerAddForm">
+                <div class="row">
+                    <div class="col-md-3">
+                    <label>Oyuncunun Adı</label>
+                    <input id="firstName" formControlName="firstName" class="form-control" type="text"  />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Oyuncunun Soy Adı</label>
+                        <input id="lastName" formControlName="lastName" class="form-control" type="text"  />
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">                    
+                        <div class="form-group">
+                            <label>Oyuncunun Fotoğrafı</label>
+                            <input class="form-control" type="file" (change)="onFileSelected($event)" name="name" multiple/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Tc Numarası</label>
+                        <input id="tcNo" formControlName="tcNo" class="form-control" type="text"  />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Kullandığı Ayak</label>
+                        <select id="footId" name="footId" formControlName="footId"  class="form-control">
+                            <option *ngFor="let foot of foots"  value="{{foot.footId}}">
+                            {{foot.footName}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Geçmiş Kayıt Bilgisi</label>
+                        <select id="fromClubId" name="form" formControlName="fromClubId"  class="form-control">
+                            <option *ngFor="let fromClub of fromClubs"  value="{{fromClub.fromClubId}}">
+                            {{fromClub.fromClubName}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Lisans Numarası</label>
+                        <input id="licanceNo" formControlName="licanceNo" class="form-control" type="text"  />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Doğum Yeri</label>
+                        <input id="birthPlace" formControlName="birthPlace" class="form-control" type="text"  />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Doğum Tarihi</label>
+                        <input id="birthdayDate" formControlName="birthdayDate" class="form-control" type="date"  />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Anne Adı</label>
+                        <input id="motherName" formControlName="motherName" class="form-control" type="text"  />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Baba Adı</label>
+                        <input id="fatherName" formControlName="fatherName" class="form-control" type="text"  />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Mevki Bilgisi</label>
+                        <select id="positionId" name="form" formControlName="positionId"  class="form-control">
+                            <option *ngFor="let position of positions"  value="{{position.positionId}}">
+                            {{position.positionName}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Gittiği Kulüp</label>
+                        <input id="goneClub" formControlName="goneClub" class="form-control" type="text"  />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label>Okuduğu Okul</label>
+                    <input id="school" formControlName="school" class="form-control" type="text">
+                </div>              
+                <div>
+                    <form [formGroup]="parentAddForm">
+                        <div class="row" *ngIf="playerAddForm">
+                            <div class="col-md-12">
+                                <label>Veli Adı</label>
+                                <input id="parentName" formControlName="parentName" class="form-control" type="text"  />
+                            </div>
+                            <div class="col-md-12">
+                                <label>Veli Telefon Numarası</label>
+                                <input id="phoneNumber" formControlName="phoneNumber" class="form-control" type="text"  />
+                            </div>
+                            <div class="col-md-12">
+                                <label>Veli Email Adresi</label>
+                                <input id="email" formControlName="email" class="form-control" type="text"  />
+                            </div>
+                            <div class="col-md-12">
+                                <label>İkametgah Adresi</label>
+                                <input id="adress" formControlName="adress" class="form-control" type="text"  />
+                            </div>
+                            <div class="col-md-12">
+                                <label>Veli Mesleği</label>
+                                <input id="job" formControlName="job" class="form-control" type="text"  />
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div><br>
+            <input *ngIf="parentAddButton" class="p-button-success mr-2" pButton pRipple type="button" (click)="parentAdd()" value="Veli Ekle"><br> 
+            <input *ngIf="playerAddButton" class="p-button-success mr-2" pButton pRipple type="button" (click)="playerAdd()" value="Sporcu Ekle"><br>         
+          </form>      
+        </div>
+        <br>
+        
+    </div>
+  </div>
+  

@@ -1,0 +1,56 @@
+
+<div class="card">
+  <p-table #dt [value]="playersDto" dataKey="playerId" sortMode="multiple" selectionMode="multiple" [(selection)]="selectedPlayers"
+  [rows]="6" [showCurrentPageReport]="true" [selectionPageOnly]="true" styleClass="p-mt-5" [loading]="loading"
+  [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [globalFilterFields]="['firstName','lastName','birthdayDate']">
+      <ng-template pTemplate="caption">
+          <div class="table-head">
+              <div class="flex table-left">
+                  <span class="p-input-icon-left ml-auto">                    
+                      <i class="pi pi-search"></i>                    
+                      <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Arama Yap" />
+                  </span>
+              </div>
+              <div class="table-right">
+                  <!-- <button pButton pRipple label="Oyuncu Ekle" icon="pi pi-plus" class="p-button-success mr-2" (click)="openModal2(template1)"></button>
+                  <button pButton pRipple label="Oyuncu Sil" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectProductlayers()" [disabled]="!selectedProducts || !selectedProducts.length"></button> -->
+              </div>
+          </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width: 3rem">
+                  <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+              </th>
+              <th pSortableColumn="firstName">Adı<p-sortIcon field="firstName"></p-sortIcon></th>
+              <th >Fotoğrafı</th>
+              <th pSortableColumn="tcNo">TC No<p-sortIcon field="tcNo"></p-sortIcon></th>
+              <th>Kullandığı Ayak</th>            
+              <th>Mevki</th>
+              <th pSortableColumn="parentName">Veli Adı<p-sortIcon field="parentName"></p-sortIcon></th>
+              <th pSortableColumn="parentPhoneNumber">Telefon Numarası<p-sortIcon field="parentPhoneNumber"></p-sortIcon></th>
+              <th pSortableColumn="status">Durum<p-sortIcon field="status"></p-sortIcon></th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-player>
+          <tr>
+              <td>
+                  <p-tableCheckbox [value]="player"></p-tableCheckbox>
+              </td>
+              <td>{{player.firstName}} {{player.lastName}}</td>
+              <td><img src="https://localhost:44312/uploads/{{player.photoPath}}" [alt]="player.firstName" width="100" class="shadow-4" /></td>
+              <td>{{player.tcNo}}</td>
+              <td>{{player.footName}}</td>
+              <td>{{player.positionName}}</td>
+              <td>{{player.parentName}}</td>
+              <td>{{player.parentPhoneNumber}}</td>                
+              <td>{{player.status}}</td>   
+              <td>
+                  <!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="openModal(template2,product)"></button> -->
+              </td>     
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
