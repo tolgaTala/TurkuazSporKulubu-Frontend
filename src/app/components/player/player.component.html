@@ -1,4 +1,4 @@
-
+<p-confirmDialog [style]="{width: '60vw'}"></p-confirmDialog>
 <div class="card">
   <p-table #dt [value]="playersDto" dataKey="playerId" sortMode="multiple" selectionMode="multiple" [(selection)]="selectedPlayers"
   [rows]="6" [showCurrentPageReport]="true" [selectionPageOnly]="true" styleClass="p-mt-5" [loading]="loading"
@@ -13,8 +13,8 @@
                   </span>
               </div>
               <div class="table-right">
-                  <!-- <button pButton pRipple label="Oyuncu Ekle" icon="pi pi-plus" class="p-button-success mr-2" (click)="openModal2(template1)"></button>
-                  <button pButton pRipple label="Oyuncu Sil" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectProductlayers()" [disabled]="!selectedProducts || !selectedProducts.length"></button> -->
+                  <button pButton pRipple label="Oyuncu Ekle" icon="pi pi-plus" class="p-button-success mr-2" (click)="openPlayerAddModal()"></button>
+                  <button pButton pRipple label="Oyuncu Sil" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectPlayers()" [disabled]="!selectedPlayers || !selectedPlayers.length"></button>
               </div>
           </div>
       </ng-template>
@@ -48,7 +48,7 @@
               <td>{{player.parentPhoneNumber}}</td>                
               <td>{{player.status}}</td>   
               <td>
-                  <!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="openModal(template2,product)"></button> -->
+                  <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="open(player)"></button>
               </td>     
           </tr>
       </ng-template>

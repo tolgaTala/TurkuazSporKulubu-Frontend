@@ -15,6 +15,8 @@ import { Parent } from 'src/app/models/parent';
 import { ParentService } from 'src/app/services/parent.service';
 import { Position } from 'src/app/models/position';
 import { PositionService } from 'src/app/services/position.service';
+import { ToastrService } from 'ngx-toastr';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-player-add',
@@ -37,7 +39,9 @@ export class PlayerAddComponent implements OnInit {
     private footsService:FootsService,
     private fromClubService:FromClubService,
     private parentService:ParentService,
-    private positionService:PositionService) { }
+    private positionService:PositionService,
+    private toastrService: ToastrService )
+    { }
 
   ngOnInit(): void {
     this.getPositions()
@@ -101,14 +105,13 @@ export class PlayerAddComponent implements OnInit {
     if(this.parentAddForm.valid){
       let parentModel=Object.assign({},this.parentAddForm.value)
       this.parentService.add(parentModel).subscribe(response=>{
-        console.log("veli eklendi");       
+        this.toastrService.success(response.message)    
         this.parentAddButton=false
         this.playerAddButton=true
       });
     }
     else{
-      console.log("geldi");
-      
+      this.toastrService.error("Lütfen boş bırakmayın!")      
     }
   }
   
@@ -140,20 +143,16 @@ export class PlayerAddComponent implements OnInit {
         console.log(formData);
         
         this.playerService.add(formData).subscribe((response) => {
-          console.log(response.message);
-          
-         // this.toastrService.success(response.message);
+         this.toastrService.success(response.message);
           window.location.reload();
         });
         })
         
       }else{
-        console.log("boş bırakmayın");
-        
-        //this.toastrService.error("Lütfen Boş Bırakmayın")
+        this.toastrService.error("Lütfen Boş Bırakmayın")
       }
     }
-  
+    
     onFileSelected(event: any) {
       for (let i = 0; i < event.target.files.length; i++) {
         this.selectedFile = <File>event.target.files[i];

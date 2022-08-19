@@ -1,0 +1,103 @@
+<div class="container p-4">
+    <div class="col-md-12">
+        <div class="card-header"><h2 class="title">Oyuncu Güncelle</h2></div>
+        <div>
+          <form [formGroup]="playerUpdateForm">
+            <div class="row" *ngIf="playerUpdateForm">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-4">
+                            <label>Oyuncunun Adı</label>
+                            <input id="firstName" formControlName="firstName" class="form-control" type="text"  />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Oyuncunun Soy Adı</label>
+                                <input id="lastName" formControlName="lastName" class="form-control" type="text"  />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Tc Numarası</label>
+                                <input id="tcNo" formControlName="tcNo" class="form-control" type="text"  />
+                            </div>
+                        </div>
+                        <div class="row">                    
+                            <div class="col-md-4">
+                                <label>Doğum Yeri</label>
+                                <input id="birthPlace" formControlName="birthPlace" class="form-control" type="text"  />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Doğum Tarihi</label>
+                                <input id="birthdayDate" formControlName="birthdayDate" class="form-control" type="date"  />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Gittiği Kulüp</label>
+                                <input id="goneClub" formControlName="goneClub" class="form-control" type="text"  />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Anne Adı</label>
+                                <input id="motherName" formControlName="motherName" class="form-control" type="text"  />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Baba Adı</label>
+                                <input id="fatherName" formControlName="fatherName" class="form-control" type="text"  />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Lisans Numarası</label>
+                                <input id="licanceNo" formControlName="licanceNo" class="form-control" type="text"  />
+                            </div>                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Kullandığı Ayak</label>
+                                <select id="footId" name="footId" formControlName="footId"  class="form-control">
+                                    <option *ngFor="let foot of foots"  value="{{foot.footId}}">
+                                    {{foot.footName}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Geçmiş Kayıt Bilgisi</label>
+                                <select id="fromClubId" name="form" formControlName="fromClubId"  class="form-control">
+                                    <option *ngFor="let fromClub of fromClubs"  value="{{fromClub.fromClubId}}">
+                                    {{fromClub.fromClubName}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Mevki Bilgisi</label>
+                                <select id="positionId" name="form" formControlName="positionId"  class="form-control">
+                                    <option *ngFor="let position of positions"  value="{{position.positionId}}">
+                                    {{position.positionName}}
+                                    </option>
+                                </select>
+                            </div>              
+                        </div>
+                    </div>                    
+                    <div class="col-md-3 mt-4 text-center px-5">   
+                        <div class="card " style="width: 12rem;">
+                            <img class="card-img-top" src="https://localhost:44312/uploads/{{gelenPlayer.photoPath}}" alt="Card image cap">
+                        </div>                    
+                        <div class="form-group mt-2">
+                            <button type="button" class="btn btn-primary" (click)="fileInput.click()">Fotoğraf Yükle</button>
+                            <input hidden #fileInput class="form-control" type="file" (change)="onFileSelected($event)" name="name" multiple/>
+                        </div>
+                    </div>                    
+                </div>                
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Okuduğu Okul</label>
+                        <input id="school" formControlName="school" class="form-control" type="text">
+                    </div>
+                </div>               
+                
+            </div><br>
+            <input class="p-button-success mr-2" pButton pRipple type="button" (click)="updatePlayer()" value="Sporcu Güncelle"><br>         
+          </form>      
+        </div>
+        <br>
+        
+    </div>
+  </div>
+  

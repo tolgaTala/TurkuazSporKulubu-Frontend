@@ -28,4 +28,14 @@ export class PlayerService {
     let newPath = this.apiUrl + "players/add";
     return this.httpClient.post<ResponseModel>(newPath,player);
   }
+  update(player:any):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"players/update",player)
+  }
+  updateWithImage(player:any):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"players/updateImage",player)
+  }
+  hidden(list:number[]):Observable<ResponseModel>{
+    console.log("serviste ",list);    
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"players/hidden",list)
+  }
 }
