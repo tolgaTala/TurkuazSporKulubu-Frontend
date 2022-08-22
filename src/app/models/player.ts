@@ -11,6 +11,7 @@ export interface Player{
     goneClub :string;
     birthdayDate :Date
     birthPlace :string;
+    formaNumber :string;
     motherName :string;
     fatherName :string;
     school :string;

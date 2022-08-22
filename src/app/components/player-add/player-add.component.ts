@@ -92,6 +92,7 @@ export class PlayerAddComponent implements OnInit {
       goneClub: [''],
       birthdayDate: ['', Validators.required],
       birthPlace: ['', Validators.required],
+      formaNumber: ['', Validators.required],
       motherName: ['', Validators.required],
       fatherName: ['', Validators.required],
       school: ['', Validators.required],
@@ -132,6 +133,7 @@ export class PlayerAddComponent implements OnInit {
         formData.append('goneClub', this.playerAddForm.get('goneClub').value);
         formData.append('birthdayDate', this.playerAddForm.get('birthdayDate').value);
         formData.append('birthPlace', this.playerAddForm.get('birthPlace').value);
+        formData.append('formaNumber', this.playerAddForm.get('formaNumber').value);
         formData.append('motherName', this.playerAddForm.get('motherName').value);
         formData.append('fatherName', this.playerAddForm.get('fatherName').value);
         formData.append('school', this.playerAddForm.get('school').value);
